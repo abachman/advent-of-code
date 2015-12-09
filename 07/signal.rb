@@ -54,8 +54,6 @@
 # what signal is ultimately provided to wire a?
 #
 
-in_file = open('input.txt').readlines
-
 # name is the label for this Wire, outputs are gates or or other wires, input is a
 Wire = Struct.new(:name, :value) do
   def ready?
@@ -197,17 +195,6 @@ end
 
 ## TEST
 
-# in_file = [
-#   '123 -> x',
-#   '456 -> y',
-#   'x AND y -> d',
-#   'x OR y -> e',
-#   'x LSHIFT 2 -> f',
-#   'y RSHIFT 2 -> g',
-#   'NOT x -> h',
-#   'NOT y -> i',
-# ]
-
 def get_wire(name, wires)
   if /[a-z]+/ =~ name
     out_wire = wires[name]
@@ -261,6 +248,19 @@ end
 ## Part One
 
 puts "------- PART ONE -------"
+
+in_file = open('input.txt').readlines
+
+# in_file = [
+#   '123 -> x',
+#   '456 -> y',
+#   'x AND y -> d',
+#   'x OR y -> e',
+#   'x LSHIFT 2 -> f',
+#   'y RSHIFT 2 -> g',
+#   'NOT x -> h',
+#   'NOT y -> i',
+# ]
 
 initialize_circuit(in_file, wires, gates)
 
