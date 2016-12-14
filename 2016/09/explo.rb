@@ -82,11 +82,11 @@ def decompress(sequence, level=0)
       repeat  = com[2].to_i
       command_size = com[0].size
 
-      sub_sequence = sequence[index + command_size, scan_to]
 
       if PART_ONE
         sub_size = scan_to
       else
+        sub_sequence = sequence[index + command_size, scan_to]
         sub_size = decompress(sub_sequence, level+1)
       end
 
