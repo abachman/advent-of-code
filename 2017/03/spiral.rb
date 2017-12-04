@@ -30,18 +30,43 @@
 # your puzzle input all the way to the access port?
 #
 # Your puzzle input is 325489.
+#
+#
+# --- Part Two ---
+#
+# As a stress test on the system, the programs here clear the grid and then
+# store the value 1 in square 1. Then, in the same allocation order as shown
+# above, they store the sum of the values in all adjacent squares, including
+# diagonals.
+#
+# So, the first few squares' values are chosen as follows:
+#
+# - Square 1 starts with the value 1.
+# - Square 2 has only one adjacent filled square (with value 1), so it also
+#   stores 1.
+# - Square 3 has both of the above squares as neighbors and stores the sum of
+#   their values, 2.
+# - Square 4 has all three of the aforementioned squares as neighbors and
+#   stores the sum of their values, 4.
+# - Square 5 only has the first and fourth squares as neighbors, so it gets the
+#   value 5.
+#
+# - Once a square is written, its value does not change. Therefore, the first
+# few squares would receive the following values:
+#
+#     147  142  133  122   59
+#     304    5    4    2   57
+#     330   10    1    1   54
+#     351   11   23   25   26
+#     362  747  806--->   ...
+#
+# What is the first value written that is larger than your puzzle input?
+#
+#
 
 input = 325489
 
-PART_ONE = false
-# 0, 0 -> 1
-# 1, 0 -> 2
-# 1, 1 -> 3
-# 0, 1 -> 4
-# -1, 1 -> 5
-# -1, 0 -> 6
-
-map = {}
+PART_ONE = ENV['TWO'] != '1'
 
 MOVEMENT = {
   r: [1, 0],
@@ -50,18 +75,12 @@ MOVEMENT = {
   d: [0, -1],
 }
 
-turn = {
+TURN = {
   r: :u,
   u: :l,
   l: :d,
   d: :r
 }
-
-c = [0,0]
-n = 1
-
-map[c.to_s] = n
-dir = :r
 
 def move(coords, dir)
   [
@@ -85,52 +104,56 @@ end
 
 def sum_of_neighbors(map, coords)
   sum_of_neighbors = 0
-  # puts "ORIGIN #{ coords.to_s }"
   neighbors(coords).each do |n_coords|
-    # puts "  NEIGHBOR #{ n_coords.to_s } #{ map[n_coords.to_s].to_i }"
     sum_of_neighbors += map[n_coords.to_s].to_i
   end
-  # puts "SUM #{ sum_of_neighbors }"
   sum_of_neighbors
 end
 
-c = move(c, dir)
-
-if PART_ONE
-  n += 1
-else
-  n = sum_of_neighbors(map, c)
+# ***
+# This is pretty much the only place the logic is different between part one
+# and part two.
+def next_token(map, coord, n)
+  if PART_ONE
+    n + 1
+  else
+    sum_of_neighbors(map, coord)
+  end
 end
+# ***
+
+# start at 0,0 facing right
+c = [0,0]
+n = 1
+dir = :r
+
+# place token at origin
+map = {}
+map[c.to_s] = n
+
+# move forward, increment token, place
+c = move(c, dir)
+n = next_token(map, c, n)
 map[c.to_s] = n
 
 # start at 0,0
 # face R
+# move forward
 # loop:
-#   move forward
 #   if L is open, turn L
+#   move forward
+#   place token
 loop do
-  turn_dir = turn[dir]
-  turn_step = move(c, turn_dir)
-  if map[turn_step.to_s].nil?
-    # if a left turn is open, take it
-    dir = turn_dir
-    c = turn_step
-  else
-    # maintain old direction and move
-    c = move(c, dir)
+  # if a left turn is open (no token placed), turn
+  left_turn = TURN[dir]
+  if map[ move(c, left_turn).to_s ].nil?
+    dir = left_turn
   end
 
-  # increment counter
+  c = move(c, dir)
 
-  if PART_ONE
-    n += 1
-  else
-    n = sum_of_neighbors(map, c)
-  end
-
-  # puts "COORDS #{ c.to_s } VAL #{n}"
-
-  # store at current coordinate
+  # increment token and store
+  n = next_token(map, c, n)
   map[c.to_s] = n
 
   if PART_ONE
@@ -147,3 +170,6 @@ loop do
 end
 
 puts "STEPS: #{ c[0].abs + c[1].abs }"
+
+# part one: 552
+# part two: 330785
