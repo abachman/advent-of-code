@@ -146,14 +146,6 @@
 #
 # EXAMPLE
 
-PART_ONE = ENV['TWO'] != '1'
-
-list  = [0,1,2,3,4] # list of numbers
-input = [3,4,1,5]   # list of skip lengths
-
-list = (0..255).to_a
-input = open('input.txt').read()
-
 # variables
 def round(list, input, current, skip)
   list_size = list.size
@@ -184,6 +176,7 @@ def round(list, input, current, skip)
   [ current, skip ]
 end
 
+# takes list of bytes, returns dense hash
 def dense_hash(list)
   hsh = []
 
@@ -204,28 +197,12 @@ def dense_hash(list)
   end
 
   # puts hsh.inspect
-  puts "DENSE HASH: #{ hsh.map {|v| "%02x" % [v] }.join('') }"
+  hsh
 end
 
-if PART_ONE
-  part_1_lengths = input.strip().split(',').map(&:to_i)
-  puts
-  puts "---------------- PART 1 -------------------"
-  # puts "LIST  #{ list.inspect }"
-  puts "INPUT #{ part_1_lengths.inspect }"
-
-  current, skip = round(list, part_1_lengths, 0, 0)
-
-  puts "CURRENT #{ current } SKIP #{ skip }"
-  puts "FIRST TWO VALUES: #{ list[0] }, #{ list[1] }"
-  puts "SOLUTION: #{ list[0] * list[1] }"
-  puts "-------------------------------------------"
-  puts
-else
+def knot_hash(input)
   suffix = [17, 31, 73, 47, 23]
 
-  empty_string = ''.bytes + suffix
-  aoc_2017 = 'AoC 2017'.bytes + suffix
   actual_input = input.strip().bytes + suffix
 
   current = 0
@@ -240,4 +217,52 @@ else
   end
 
   dense_hash(list)
+end
+
+def input_to_bytes(input)
+  suffix = [17, 31, 73, 47, 23]
+  input.strip().bytes + suffix
+end
+
+
+def knot_hash(input)
+  current = 0
+  skip = 0
+  list = (0..255).to_a
+
+  64.times do
+    current, skip = round(list, input_to_bytes(input), current, skip)
+  end
+
+  dh = dense_hash(list)
+  dh.map {|v| "%02x" % [v] }.join('')
+end
+
+if __FILE__ == $0
+  PART_ONE = ENV['TWO'] != '1'
+
+  list  = [0,1,2,3,4] # list of numbers
+  input = [3,4,1,5]   # list of skip lengths
+
+  list = (0..255).to_a
+  input = open('input.txt').read()
+
+  if PART_ONE
+    part_1_lengths = input.strip().split(',').map(&:to_i)
+    puts
+    puts "---------------- PART 1 -------------------"
+    # puts "LIST  #{ list.inspect }"
+    puts "INPUT #{ part_1_lengths.inspect }"
+
+    current, skip = round(list, part_1_lengths, 0, 0)
+
+    puts "CURRENT #{ current } SKIP #{ skip }"
+    puts "FIRST TWO VALUES: #{ list[0] }, #{ list[1] }"
+    puts "SOLUTION: #{ list[0] * list[1] }"
+    puts "-------------------------------------------"
+    puts
+  else
+    kh = knot_hash(input)
+    puts "KNOT HASH: #{kh}"
+  end
 end
