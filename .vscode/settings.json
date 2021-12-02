@@ -1,0 +1,6 @@
+{
+  "ruby.format": false,
+  "ruby.lint": { "rubocop": false, "standard": false, "ruby": true },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

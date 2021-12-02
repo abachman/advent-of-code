@@ -1,0 +1,26 @@
+{
+  "name": "@abachman/advent-of-code",
+  "version": "1.0.0",
+  "description": "chums, this is it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abachman/advent-of-code.git"
+  },
+  "keywords": [
+    "ignoreplz"
+  ],
+  "author": "@abachman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abachman/advent-of-code/issues"
+  },
+  "homepage": "https://github.com/abachman/advent-of-code#readme",
+  "dependencies": {
+    "@prettier/plugin-ruby": "^2.0.0",
+    "prettier": "^2.5.0"
+  }
+}
