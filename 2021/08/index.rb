@@ -1,18 +1,5 @@
 # https://adventofcode.com/2021/day/8
 
-segs = {
-  0 => %w(a b c   e f g),
-  1 => %w(    c     f  ),
-  2 => %w(a   c d e   g),
-  3 => %w(a   c d   f g),
-  4 => %w(  b c d   f  ),
-  5 => %w(a b   d   f g),
-  6 => %w(a b   d e f g),
-  7 => %w(a   c     f  ),
-  8 => %w(a b c d e f g),
-  9 => %w(a b c d   f g)
-}
-
 input = File.open('input.txt').readlines.map(&:strip)
 # input = [
 #   "acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf"
@@ -26,10 +13,6 @@ def trace(*msg)
   if TRACE || ENV['TRACE'] == '1'
     puts format(*msg)
   end
-end
-
-def is(a, b)
-  a.chars.sort == b.chars.sort
 end
 
 # a fully contained in b
