@@ -6,7 +6,7 @@ input = File.open('input.txt').readlines.map(&:strip)
 # ]
 
 TRACE = false
-PART_ONE = false
+PART_ONE = true
 PART_TWO = true
 
 def trace(*msg)
@@ -125,30 +125,24 @@ input.each do |line|
   left, right = line.split('|').map {|side| side.split(' ')}
 
   if PART_ONE
-    right.each do |word|
-        digicount += case word.size
-                    when 2, 3, 4, 7
-                      1
-                    else
-                      0
-                    end
-    end
+    digicount += right.select {|word| [2, 3, 4, 7].include?(word.size)}.size
   end
 
   if PART_TWO
     lookup = solve(left)
-    print format("%40s: ", right.join(' '))
+
+    out = format("%40s: ", right.join(' '))
 
     num = []
     right.each do |word|
       word = norm(word)
       num << lookup[norm(word)]
-      print num.last
+      out += num.last.to_s
     end
 
     sum += num.map(&:to_s).join('').to_i
 
-    puts
+    trace out
   end
 end
 
