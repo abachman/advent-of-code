@@ -1,0 +1,28 @@
+      graph {
+        qi -- UD
+qi -- br
+qi -- TF
+qi -- VO
+UD -- aa
+UD -- start
+UD -- hf
+UD -- wb
+jt -- br
+br -- end
+br -- HA
+br -- hf
+br -- TF
+wb -- TF
+wb -- aa
+wb -- KX
+TF -- hf
+VO -- aa
+VO -- hf
+VO -- start
+aa -- end
+aa -- hf
+end -- HA
+HA -- hf
+start -- qi
+
+      }
