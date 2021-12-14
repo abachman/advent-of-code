@@ -2,7 +2,21 @@
 #
 # l-system-ish
 #
-# NOTE: I had to cheat for part 2 :(
+# NOTE: I had to cheat for part 2 :( BUT, I was able to eventually get the
+# correct answers.
+#
+# Using the string building solution worked for Part 1. I built a string,
+# counted characters, and done. In part two, iterating 40 times, the brute force
+# solution had no chance.
+#
+# I switched to a pair-counting solution, but didn't understand how to get from
+# there to character counts. Looking at someone else's code, I found the idea to
+# count pairs AND single characters from the beginning. There were a couple of
+# gross, very-long-to-debug problems with logic errors in my initial pair
+# counter and in my totals counter.
+#
+# The first only showed up when I ran on input.txt vs demo.txt and the second
+# only showed up when I ran 40 repetitions.
 #
 
 require 'bigdecimal'
