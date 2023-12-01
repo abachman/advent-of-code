@@ -1,0 +1,20 @@
+{
+  "imports": {
+    "std/": "https://deno.land/std@0.208.0/"
+  },
+  "tasks": {
+    // run with `DAY=01 deno task day`
+    "day": "deno run --allow-read --allow-env --watch $DAY/index.ts",
+
+    // deno task init 03 # -> create 03/ folder with boilerplate files
+    "init": "deno run --allow-read --allow-write lib/init.ts"
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 120,
+    "indentWidth": 2,
+    "semiColons": false,
+    "singleQuote": true,
+    "proseWrap": "preserve"
+  }
+}
