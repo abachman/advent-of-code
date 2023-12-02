@@ -8,4 +8,10 @@ async function setup(day: string) {
   }
 }
 
-export { setup }
+function log(...args: any[]) {
+  if (Deno.env.get('DEBUG')) {
+    console.log(...args)
+  }
+}
+
+export { setup, log }

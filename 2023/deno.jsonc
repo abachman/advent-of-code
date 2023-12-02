@@ -4,7 +4,7 @@
   },
   "tasks": {
     // run with `DAY=01 deno task day`
-    "day": "deno run --allow-read --allow-env --watch $DAY/index.ts",
+    "day": "DEBUG=true deno run --allow-read --allow-env --watch $DAY/index.ts",
 
     // deno task init 03 # -> create 03/ folder with boilerplate files
     "init": "deno run --allow-read --allow-write lib/init.ts"
