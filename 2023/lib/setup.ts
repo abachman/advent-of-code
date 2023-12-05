@@ -4,7 +4,7 @@ import { part } from './env.ts'
 async function setup(day: string) {
   return {
     PART: await part(),
-    INPUT: await input(day)
+    INPUT: await input(day),
   }
 }
 
@@ -14,4 +14,4 @@ function log(...args: any[]) {
   }
 }
 
-export { setup, log }
+export { log, setup }

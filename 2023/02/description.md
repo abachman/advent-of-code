@@ -24,7 +24,7 @@ In the example above, games 1, 2, and 5 would have been possible if the bag had 
 
 Determine which games would have been possible if the bag had been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes. What is the sum of the IDs of those games?
 
-### part 2 
+### part 2
 
 As you continue your walk, the Elf poses a second question: in each game you played, what is the fewest number of cubes of each color that could have been in the bag to make the game possible?
 

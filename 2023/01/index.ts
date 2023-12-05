@@ -9,7 +9,15 @@ const wn = (s: string): string => {
   if (/\d/.test(s)) return s
   const out = [
     null,
-    'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
   ].indexOf(s).toString()
   return out
 }

@@ -29,10 +29,9 @@ if (PART === 'one') {
 if (/^[0-9][0-9]$/.test(day)) {
   const dir = `./${day}`
   await ensureDir(dir)
-
   ;['input.txt', 'example.txt', 'index.ts', 'description.md'].forEach(async (file: string) => {
     await ensureFile(join(day, file))
-  });
+  })
 
   const nday = Number(day)
   const index = t(template, { day, nday })

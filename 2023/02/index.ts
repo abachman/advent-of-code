@@ -1,4 +1,4 @@
-import { setup, log } from '../lib/setup.ts'
+import { log, setup } from '../lib/setup.ts'
 
 const { PART, INPUT } = await setup('02')
 
@@ -8,10 +8,10 @@ const inputs = INPUT.map((line) => {
   const [label, games] = line.split(': ')
   log({ label, games })
 
-  if (!games) { return }
+  if (!games) return
 
   const id = Number(label.split(' ')[1])
-  const maxCounts = {id, blue: 0, red: 0, green: 0}
+  const maxCounts = { id, blue: 0, red: 0, green: 0 }
 
   games.split(';').forEach((game) => {
     const picks = game.split(', ')
@@ -29,17 +29,17 @@ const inputs = INPUT.map((line) => {
 })
 
 type Counts = {
-  id?: number,
-  red: number,
-  green: number,
+  id?: number
+  red: number
+  green: number
   blue: number
 }
 
 // determine how many games would have been possible given cube counts:
 const given: Counts = {
   red: 12,
-  green: 13, 
-  blue: 14
+  green: 13,
+  blue: 14,
 }
 
 const power = (counts: Counts) => {
@@ -47,7 +47,7 @@ const power = (counts: Counts) => {
 }
 
 const possible = inputs.reduce((sum, counts) => {
-  if (!counts) { return sum }
+  if (!counts) return sum
 
   const red = counts.red <= given.red
   const green = counts.green <= given.green
@@ -63,4 +63,3 @@ const possible = inputs.reduce((sum, counts) => {
 }, 0)
 
 log({ possible })
-

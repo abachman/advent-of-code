@@ -43,7 +43,7 @@ the `lib/setup.ts` boilerplate file provides the PART value as set in the file, 
 import { setup } from '../lib/setup.ts'
 
 const { PART, INPUT } = await setup('03') // setup(day), where day is the folder
-                                          // name that the script is contained in
+// name that the script is contained in
 ```
 
 ### init a day
