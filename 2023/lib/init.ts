@@ -35,5 +35,7 @@ if (/^[0-9][0-9]$/.test(day)) {
 
   const nday = Number(day)
   const index = t(template, { day, nday })
-  await Deno.writeTextFile(join(day, 'index.ts'), index)
+  Deno.writeTextFileSync(join(day, 'index.ts'), index)
 }
+
+console.log('done')
