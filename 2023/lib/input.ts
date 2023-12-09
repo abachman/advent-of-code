@@ -7,7 +7,7 @@ function readlines(filename: string): Promise<Array<string>> {
 async function input(day: string) {
   const useExample = (await env('EXAMPLE')) === 'true'
   const infile = `./${day}/${useExample ? 'example' : 'input'}.txt`
-  console.log('reading from', infile)
+  console.log('reading from\x1b[33;1m', infile, '\x1b[0m')
   return readlines(infile)
 }
 
