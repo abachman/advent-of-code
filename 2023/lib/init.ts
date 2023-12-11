@@ -36,6 +36,7 @@ if (/^[0-9][0-9]$/.test(day)) {
   const nday = Number(day)
   const index = t(template, { day, nday })
   Deno.writeTextFileSync(join(day, 'index.ts'), index)
+  console.log('\n--------\n', index, '\n--------\n');
 }
 
 console.log('done')
