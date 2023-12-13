@@ -3,8 +3,7 @@
     "std/": "https://deno.land/std@0.208.0/"
   },
   "tasks": {
-    // run with `DAY=01 deno task day`
-    // "day": "DEBUG=true deno run --allow-read --allow-env --watch $DAY/index.ts",
+    // run with `deno task day 1`
     "day": "DEBUG=true deno run --allow-net=deno.land --allow-read --allow-env --watch lib/day.ts",
 
     // deno task init 03 # -> create 03/ folder with boilerplate files

@@ -9,7 +9,7 @@ every day's problem is in a folder numbered according to day and should have a c
 ```json
 {
   "tasks": {
-    "day": "deno run --allow-read --allow-env --watch $DAY/index.ts"
+    "day": "DEBUG=true deno run --allow-net=deno.land --allow-read --allow-env --watch lib/day.ts",
   }
 }
 ```
@@ -17,7 +17,7 @@ every day's problem is in a folder numbered according to day and should have a c
 so that they can be run with:
 
 ```console
-$ DAY=01 deno task day
+$ deno task day 1
 ```
 
 folders should contain at least three files:
@@ -36,14 +36,14 @@ the common variables are `PART` and `EXAMPLE`:
 PART=one
 EXAMPLE=true
 ```
-
 the `lib/setup.ts` boilerplate file provides the PART value as set in the file, and the appropriate input text based on the value of `EXAMPLE`. when `EXAMPLE` is `'true'`, `example.txt` is loaded, when it is any other value, `input.txt` is loaded.
 
 ```typescript
 import { setup } from '../lib/setup.ts'
 
-const { PART, INPUT } = await setup('03') // setup(day), where day is the folder
+// setup(day), where day is the folder
 // name that the script is contained in
+const { PART, INPUT } = await setup('03') 
 ```
 
 ### init a day
