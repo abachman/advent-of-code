@@ -1,6 +1,6 @@
 import { input } from './input.ts'
 import { part } from './env.ts'
-import { log } from './output.ts'
+import { log, c } from './output.ts'
 import './array.ts'
 
 async function setup(day: string) {
@@ -10,4 +10,4 @@ async function setup(day: string) {
   }
 }
 
-export { log, setup }
+export { c, log, setup }
