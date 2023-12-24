@@ -1,5 +1,16 @@
 _2023_
 
+**solved**
+
+- 1, 2, 3, 4, 5, 6, 7, 8, 9, 10a, 11
+
+**unsolved**
+
+- 10b, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
+
+
+## notes
+
 going to try with [deno](https://docs.deno.com/runtime/manual/getting_started/installation) / typescript this year.
 
 ### running examples
@@ -51,3 +62,5 @@ const { PART, INPUT } = await setup('03')
 ```console
 $ deno task init 02
 ```
+
+

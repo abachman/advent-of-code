@@ -36,27 +36,27 @@ So, the next value of the first history is 18.
 
 Finding all-zero differences for the second history requires an additional sequence:
 
-1   3   6  10  15  21
-  2   3   4   5   6
-    1   1   1   1
-      0   0   0
+    1   3   6  10  15  21
+      2   3   4   5   6
+        1   1   1   1
+          0   0   0
 
 Then, following the same process as before, work out the next value in each sequence from the bottom up:
 
-1   3   6  10  15  21  28
-  2   3   4   5   6   7
-    1   1   1   1   1
-      0   0   0   0
+    1   3   6  10  15  21  28
+      2   3   4   5   6   7
+        1   1   1   1   1
+          0   0   0   0
 
 So, the next value of the second history is 28.
 
 The third history requires even more sequences, but its next value can be found the same way:
 
-10  13  16  21  30  45  68
-   3   3   5   9  15  23
-     0   2   4   6   8
-       2   2   2   2
-         0   0   0
+    10  13  16  21  30  45  68
+       3   3   5   9  15  23
+         0   2   4   6   8
+           2   2   2   2
+             0   0   0
 
 So, the next value of the third history is 68.
 

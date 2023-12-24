@@ -35,7 +35,7 @@ if (/^[0-9][0-9]$/.test(day)) {
 
   const nday = Number(day)
   const index = t(template, { day, nday })
-  console.log('\n// --------\n', index, '\n// --------\n');
+  console.log(`\n// --------\ncat <<'EOF' >> ${day}/index.ts\n`, index, '\nEOF\n// --------\n');
 }
 
 console.log('done')

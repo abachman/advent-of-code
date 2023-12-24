@@ -5,12 +5,12 @@ export function* pairs(s: string[]): Generator<string[]> {
 }
 
 // '1 2 3' => [ '1', '2', '3' ]
-export function ns(s: string): string[] { 
-  return s.split(' ').filter((v) => /-?\d+/.test(v)) 
+export function ns(s: string, c = ' '): string[] { 
+  return s.split(c).filter((v) => /-?\d+/.test(v)) 
 }
 
-export function nns(s: string): number[] {
-  return ns(s).map((v) => Number(v))
+export function nns(s: string, c=' '): number[] {
+  return ns(s, c).map((v) => Number(v))
 }
 
 export function noblank(lines: string[]): string[] {
