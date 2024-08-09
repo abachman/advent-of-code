@@ -22,31 +22,30 @@ const tower = (line: number[]): [number, number] => {
       levels.push([])
       c += 1
       n += 1
-    } else { 
+    } else {
       break
     }
-    ct++ 
+    ct++
   }
 
   levels[levels.length - 1].push(0)
 
   // consider the levels in reverse order
-  // PART_ONE
   for (let i = levels.length - 1; i >= 1; i--) {
-    // PART_ONE
-    const c = levels[i],
-          n = levels[i - 1],
-          lc = c[c.length - 1],
-          ln =  n[n.length - 1]
+    const c = levels[i],    // current line
+          n = levels[i - 1] // next line
 
-    levels[i - 1].push(ln + lc) 
+    // PART_ONE
+    const lc = c[c.length - 1],
+          ln =  n[n.length - 1]
+    levels[i - 1].push(ln + lc)
 
     // PART_TWO
     const fc = c[0], fn = n[0]
     levels[i - 1].unshift(fn - fc)
   }
 
-  return [ 
+  return [
     levels[0][levels[0].length - 1], // one
     levels[0][0]     // two
   ]
